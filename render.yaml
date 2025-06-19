@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: metabase
+    env: docker
+    plan: free
+    autoDeploy: false
+    envVars:
+      - key: MB_DB_CONNECTION_URI
+        fromDatabase:
+          name: elephant
+          property: connectionString
+databases:
+  - name: elephant
+    databaseName: postgre_tcc
+    ipAllowList: [] # only allow internal connections
